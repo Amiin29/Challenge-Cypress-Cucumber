@@ -1,36 +1,26 @@
-name: Cypress Tests
-on: [push]
+name: Cypress Cucumber Tests
+
+on:
+  push:
+    branches:
+      - main  # Change to your target branch
+
 jobs:
-  cypress-run:
+  build:
     runs-on: ubuntu-latest
-    # Runs tests in parallel with matrix strategy https://docs.cypress.io/guides/guides/parallelization
-    # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
-    # Also see warning here https://github.com/cypress-io/github-action#parallel
-    strategy:
-      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
-      matrix:
-        containers: [1, 2] # Uses 2 parallel instances
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 14  # Adjust the Node.js version as needed
+
       - name: Install dependencies
-        run: npm install
-      - name: Cypress run
-        # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v5
-        with:
-          working-directory: D:\Coin\Challenge-Cypress-Cucumber
-          install-command: npm install
-          start: npm start
-          record: true
-          parallel: true # Runs test in parallel using settings above
-        env:
-          # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
-          # in GitHub repo → Settings → Secrets → Actions
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm ci  # Use 'npm ci' for faster and consistent installs
+
+      - name: Run Cypress tests
+        run: npm run cypress-cucumber  # Change to your test script
+
