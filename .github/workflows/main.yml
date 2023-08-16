@@ -22,5 +22,5 @@ jobs:
         run: npm ci  # Use 'npm ci' for faster and consistent installs
 
       - name: Run Cypress tests
-        run: npm run test:cypress  # Change to your test script
+        run: npm run test:cypress
 
