@@ -13,6 +13,13 @@ jobs:
     steps:
       - name: Install dependencies
         run: npm install
+      - name: Install cypress
+        run: npm install cypress --save-dev
+      - name: Install cypress cucumber  
+        run: npm install -D cypress cypress-cucumber-preprocessor
+      - name: Install cypress cucumber
+        run: npm install --save-dev cypress-cucumber-preprocessor
+
       - name: Checkout
         uses: actions/checkout@v3
       - name: Cypress run
