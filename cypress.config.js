@@ -7,6 +7,6 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber());
     },
-    specPattern: "D:/CoinHouseChallenge/cypress/integration/feature-files/*.feature",
+    specPattern: "D:/Coin/Challenge-Cypress-Cucumber/cypress/integration/feature-files/*.feature",
   },
 });
