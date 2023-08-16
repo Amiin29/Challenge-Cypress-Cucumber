@@ -1,11 +1,11 @@
 import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
 import * as locatorsFrom from './locators/locatorsForm';
+import config from '../../config/config.js'
 
+const conf = new config()
 Given('the user is on the contact page', () => {
-  // Navigate to the contact page using Cypress commands
-  cy.fixture('Config').then((Config)=>{
-    cy.visit(Config.MainURL)
-  }) // Adjust the URL as needed
+  cy.visit(conf.GetURL());
+
 });
 
 When('they fill in the form with valid details', () => {
