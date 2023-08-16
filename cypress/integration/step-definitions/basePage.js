@@ -34,6 +34,7 @@ import * as locatorsFrom from './locators/locatorsForm';
     
   Then('I should see the {string} error message', (errorMessage) => {
     cy.get('p').should('contain', 'Subject may not be blank').invoke('text').then((text) => {
+      //-----------------------------------------------------------------------
       // Now you can work with the extracted text content
       // For example, you can perform assertions on the text
       expect(text).to.include(errorMessage);
