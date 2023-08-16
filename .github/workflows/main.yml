@@ -19,11 +19,9 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm install
-      - name: Cypress run
+      - name: npx cypress run --spec "cypress/integration/feature-files/basePage.feature"
         # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v5
-      - name: Run Cypress tests
-        run: npx cypress run --spec "cypress/integration/feature-files/basePage.feature"  # Adjust path as needed
         env:
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
           # in GitHub repo → Settings → Secrets → Actions
