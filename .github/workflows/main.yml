@@ -1,25 +1,23 @@
-name: Cypress Cucumber Tests
-
-on:
-  push:
-    branches:
-      - main
-
+name: Cypress Tests
+on: [push]
 jobs:
-  build:
+  cypress-run:
     runs-on: ubuntu-latest
-
+    # Runs tests in parallel with matrix strategy https://docs.cypress.io/guides/guides/parallelization
+    # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+    # Also see warning here https://github.com/cypress-io/github-action#parallel
+    strategy:
+      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+      matrix:
+        containers: [1, 2] # Uses 2 parallel instances
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Use your preferred Node.js version
-
+          node-version: 14
       - name: Install dependencies
-        run: npm ci
-
-      - name: Run Cypress tests
+        run: npm install
+      - name: Cypress run
         run: npx cypress run --spec "cypress/e2e/**/*.feature"
