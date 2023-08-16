@@ -11,8 +11,6 @@ jobs:
       matrix:
         containers: [1, 2] # Uses 2 parallel instances
     steps:
-      - name: Install dependencies
-        run: npm install
       - name: Install cypress
         run: npm install cypress --save-dev
       - name: Install cypress cucumber  
