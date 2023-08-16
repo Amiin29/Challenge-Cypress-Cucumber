@@ -11,25 +11,15 @@ jobs:
       matrix:
         containers: [1, 2] # Uses 2 parallel instances
     steps:
-      - name: Install cypress
-        run: npm install cypress --save-dev
-      - name: Install cypress cucumber  
-        run: npm install -D cypress cypress-cucumber-preprocessor
-      - name: Install cypress cucumber
-        run: npm install --save-dev cypress-cucumber-preprocessor
-
       - name: Checkout
         uses: actions/checkout@v3
       - name: Cypress run
         # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v5
         with:
-          # Starts web server for E2E tests - replace with your own server invocation
-          # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
-          start: npm run dev_open
-          wait-on: 'http://localhost:3000' # Waits for above
-          # Records to Cypress Cloud 
-          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
+          working-directory: D:\Coin\Challenge-Cypress-Cucumber
+          install-command: npm install
+          start: npm start
           record: true
           parallel: true # Runs test in parallel using settings above
         env:
