@@ -19,12 +19,7 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm install
-      - name: npx cypress run --spec \"cypress\\integration\\feature-files\\*.feature\"
+      - name: Run Cypress tests
+        run: npx cypress run --spec "cypress/integration/feature-files/*.feature"
         # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v5
-        env:
-          # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
-          # in GitHub repo → Settings → Secrets → Actions
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       
