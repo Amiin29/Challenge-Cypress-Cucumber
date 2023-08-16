@@ -17,4 +17,4 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Cypress run
-        run: npx cypress run --spec "cypress/e2e/**/*.feature"
+        run: npx cypress run --spec "cypress/integration/feature-files/*.feature"
