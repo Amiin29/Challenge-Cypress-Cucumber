@@ -1,13 +1,13 @@
 
 const { Given, Then } = require('cypress-cucumber-preprocessor/steps');
 import * as locatorsFrom from './locators/locatorsForm';
+import config from '../../config/config.js'
+
+const conf = new config()
 
   Given('I am on the base page', () => {
-    cy.fixture('Config').then((Config)=>{
-      cy.visit(Config.MainURL)
+      cy.visit(conf.GetURL());
     })
-  });
-
   Then('I should see the Name field', () => {
     cy.get(locatorsFrom.Name).should('be.visible');
   });
