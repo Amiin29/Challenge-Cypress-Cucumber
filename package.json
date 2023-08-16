@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test:cypress": "cypress run --spec \"cypress\\integration\\feature-files\\*.feature\"",
+
+    "cypress-cucumber": "cypress run --spec cypress/integration/feature-files",
     "dev": "cypress open --env ENV=dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev_open": "cypress run --browser chrome --env ENV=dev --record --key bfb0a337-9937-431f-983f-4b63eb60b565"
-
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.17.3",
+    "cypress": "^12.17.4",
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "cypress-cucumber-preprocessor": {
