@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:cypress": "cypress run --spec \"cypress\\integration\\feature-files\\*.feature\"",
+    "test:cypress": "cypress run --spec \"cypress\\e2e\\*.feature\"",
 
     "cypress-cucumber": "cypress run --spec cypress/integration/feature-files",
     "dev": "cypress open --env ENV=dev",
